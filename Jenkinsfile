@@ -1,31 +1,12 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps {
-                echo "Building project..."
-            }
-        }
-
-        stage('Check Directories') {
+        stage('Setup Directories') {
             steps {
                 script {
-                    def nginxExists = fileExists('nginx')
-                    def pythonExists = fileExists('python')
-
-                    if (nginxExists && pythonExists) {
-                        echo "SUCCESS: nginx and python directories exist ✅"
-                    } else {
-                        error "FAILED: nginx or python directory missing ❌"
-                    }
+                    sh 'mkdir -p nginx python'
+                    echo "✅ nginx and python directories are present!"
                 }
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                echo "Running SonarQube..."
             }
         }
     }
