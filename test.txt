@@ -2,3 +2,4 @@ test
 trigger test
 trigger build
 auto trigger test
+trigger from github
