@@ -356,3 +356,23 @@ echo "trigger build" >> trigger.txt
 git add trigger.txt
 git commit -m "Trigger Jenkins build"
 git push origin main
+git add .
+git commit -m "test webhook"
+git push origin main
+git rm --cached -r jenkins-pipeline-demo
+rm -rf jenkins-pipeline-demo/.git
+git add .
+git commit -m "fixed nested repo issue"
+git push origin main
+git pull origin main --rebase
+git push origin main
+echo "trigger build" >> test.txt
+git add .
+git commit -m "trigger jenkins build"
+git push origin main
+rm -f .git/index.lock
+jobs
+kill %1
+git add .
+git commit -m "trigger jenkins build"
+git push origin main
